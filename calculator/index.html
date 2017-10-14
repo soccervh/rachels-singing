@@ -1,0 +1,79 @@
+<html>
+<head> 
+</head>
+<body> 
+<h1>Percentage Calculator</h1>
+
+<form action="" id="caclculators">
+X: <input type="text" id="x"> 
+Y: <input type="text" id="y">? 
+
+
+<select name="select" id="select" style="width: 20%; font-size: 20px;">
+<option value="o1">What is Y% of X?</option>
+<option value="o2">X is Y% of what?</option>
+<option value="o3">What % of X is Y?</option>
+<option value="o4">X% of what is Y?</option>
+<option value="o5">Y% of X is what?</option>
+</select>
+
+
+
+
+<input type="submit" value="Calculator" id="calc">
+</form>
+<h3 id="result"></h3>
+
+<script type="text/javascript">
+var x = document.getElementById("x");
+var y = document.getElementById("y");
+var calculator = document.getElementById("select");
+var result = document.getElementById("result");
+
+var form = document.getElementById("caclculators");
+
+form.addEventListener('submit',function(event){ 
+if(!x.value || !y.value){
+alert("please, enter values!".toUpperCase());
+}
+else{
+var a = parseFloat(x.value);
+var b = parseFloat(y.value);
+var c = calculator.value;
+
+calculation(a,b,c); 
+event.preventDefault();
+}
+})
+    
+    function calculation(a,b,c){
+var r = "" ;
+switch(c){
+case "o1":
+r = b * a / 100; 
+result.innerHTML = "Result: " + b + "% of " + a + " is " + r;
+break;
+case "o2":
+r = a / b * 100;
+result.innerHTML = "Result: " + a + " is " + b + "% of " + r;
+break;
+case "o3":
+r = b / a * 100;
+result.innerHTML = "Result: " + r + "% of " + a + " is " + b;
+break; 
+case "o4":
+r = b / a * 100;
+result.innerHTML = "Result: " + a + "% of " + r + " is " + b;
+break;
+case "o5":
+r = b * a / 100;
+result.innerHTML = "Result: " + r + " is " + b + "% of " + a;
+break;
+default:
+alert("Something is wrong!");
+break;
+}
+}
+</script>
+</body>
+</html>
